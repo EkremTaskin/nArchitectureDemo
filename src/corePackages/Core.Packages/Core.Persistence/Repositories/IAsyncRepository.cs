@@ -1,4 +1,5 @@
-﻿using Core.Persistence.Paging;
+﻿using Core.Persistence.Dynamic;
+using Core.Persistence.Paging;
 using Microsoft.EntityFrameworkCore.Query;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Core.Persistence.Repositories;
 
-public interface IAsyncRepository<TEntity,TEntityId> 
+public interface IAsyncRepository<TEntity,TEntityId>: IQuery<TEntity>
     where TEntity : Entity<TEntityId>
 {
     Task<TEntity?> GetAsync(

@@ -23,22 +23,14 @@ public class EfRepositoryBase<TEntity,TEntityId,TContext>
         Context = context;
     }
 
-    public async Task<TEntity> AddAsync(TEntity entity)
+    public Task<TEntity> AddAsync(TEntity entity)
     {
-        entity.CreatedDate = DateTime.UtcNow;
-        await Context.AddAsync(entity);
-        await Context.SaveChangesAsync();
-        return entity;
+        throw new NotImplementedException();
     }
 
-    public async Task<ICollection<TEntity>> AddRangeAsync(ICollection<TEntity> entities)
+    public Task<ICollection<TEntity>> AddRangeAsync(ICollection<TEntity> entities)
     {
-        foreach (TEntity entity in entities)
-            entity.CreatedDate = DateTime.UtcNow;
-
-        await Context.AddRangeAsync(entities);
-        await Context.SaveChangesAsync();
-        return entities;
+        throw new NotImplementedException();
     }
 
     public Task<bool> AnyAsync(Expression<Func<TEntity, bool>>? predicate = null, bool withDeleted = false, bool enableTracking = true, CancellationToken cancellationToken = default)
@@ -67,6 +59,11 @@ public class EfRepositoryBase<TEntity,TEntityId,TContext>
     }
 
     public Task<Paginate<TEntity>> GetListByDynamicAsync(DynamicQuery dynamic, Expression<Func<TEntity, bool>>? predicate = null, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null, int index = 0, int size = 10, bool withDeleted = false, bool enableTracking = true, CancellationToken cancellationToken = default)
+    {
+        throw new NotImplementedException();
+    }
+
+    public IQueryable<TEntity> Query()
     {
         throw new NotImplementedException();
     }
