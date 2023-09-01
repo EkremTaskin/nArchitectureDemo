@@ -21,4 +21,5 @@ public class CreateBrandCommand : IRequest<CreatedBrandResponse>
             return null;
         }
     }
+    //
 }
