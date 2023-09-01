@@ -17,7 +17,7 @@ public class EfRepositoryBase<TEntity,TEntityId,TContext>
     where TContext : DbContext
 {
     protected readonly TContext Context;
-
+     //
     public EfRepositoryBase(TContext context)
     {
         Context = context;
