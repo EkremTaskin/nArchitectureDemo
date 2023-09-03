@@ -29,7 +29,7 @@ public class CreateBrandCommand : IRequest<CreatedBrandResponse>
 		{
 			Brand brand = _mapper.Map<Brand>(request);
 			brand.Id = Guid.NewGuid();
-
+			
 			await _brandRepository.AddAsync(brand);
 
 			CreatedBrandResponse createdBrandResponse = _mapper.Map<CreatedBrandResponse>(brand);
