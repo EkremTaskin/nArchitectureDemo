@@ -1,4 +1,5 @@
-﻿using Core.Application.Pipelines.Caching;
+﻿using Application.Services.AuthService;
+using Core.Application.Pipelines.Caching;
 using Core.Application.Pipelines.Logging;
 using Core.Application.Pipelines.Transaction;
 using Core.Application.Pipelines.Validation;
@@ -39,10 +40,14 @@ public static class ApplicationServiceRegistration
 			configuration.AddOpenBehavior(typeof(CacheRemovingBehavior<,>));
 
 			configuration.AddOpenBehavior(typeof(LoggingBehavior<,>));
+
+			//configuration.AddOpenBehavior(typeof(AuthorizationBehavior<,>));
 		});
 
 		//services.AddSingleton<LoggerServiceBase, FileLogger>();
 		services.AddSingleton<LoggerServiceBase, MsSqlLogger>();
+
+		services.AddScoped<IAuthService, AuthManager>();
 
 		return services;
 
